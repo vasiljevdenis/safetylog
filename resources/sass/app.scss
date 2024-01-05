@@ -1,0 +1,33 @@
+@import './fonts.scss';
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+div:focus-visible {
+  outline: none !important;
+}
+
+.slick-prev {
+  left: 1px;
+}
+
+.slick-next {
+  right: 1px;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 10;
+  color: rgb(0 0 0) !important;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: rgb(0 0 0 / 70%);
+}
