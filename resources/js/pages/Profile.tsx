@@ -1,20 +1,25 @@
-import { Avatar, Box, Button, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { Avatar, Box, Button, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography, useTheme } from '@mui/material';
 import LanguageIcon from '@mui/icons-material/Language';
 import PortraitIcon from '@mui/icons-material/Portrait';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
+import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { observer } from 'mobx-react-lite';
 import appState from '../store/appState';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ColorModeContext from '../settings/themeMode';
 
 const Profile = observer(() => {
 
     const [store] = useState(appState);
     const navigator = useNavigate();
+
+    const theme = useTheme();
+    const colorMode = useContext(ColorModeContext);
 
     const logOut = () => {
         localStorage.removeItem('isAuth');
@@ -54,67 +59,79 @@ const Profile = observer(() => {
                     component="nav"
                 >
                     <ListItem
+                        disablePadding
+                        secondaryAction={
+                            <IconButton edge="end" onClick={() => navigator('/profile/language')}>
+                                <KeyboardArrowRightIcon />
+                            </IconButton>
+                        }
+                    >
+                        <ListItemButton sx={{ height: '100%' }} onClick={() => navigator('/profile/language')}>
+                            <ListItemAvatar>
+                                <LanguageIcon />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary="Language"
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem
+                        disablePadding
                         secondaryAction={
                             <IconButton edge="end">
                                 <KeyboardArrowRightIcon />
                             </IconButton>
                         }
                     >
-                        <ListItemAvatar>
-                            <LanguageIcon />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary="Language"
-                        />
+                        <ListItemButton sx={{ height: '100%' }}>
+                            <ListItemAvatar>
+                                <PortraitIcon />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary="Account settings"
+                            />
+                        </ListItemButton>
                     </ListItem>
                     <ListItem
+                        disablePadding
+                        secondaryAction={
+                            <IconButton edge="end" onClick={colorMode.toggleColorMode}>
+                                {theme.palette.mode === 'dark' ? <ToggleOnIcon sx={{ color: 'black' }} /> : <ToggleOffIcon sx={{ color: 'black' }} />}
+                            </IconButton>
+                        }
+                    >
+                        <ListItemButton sx={{ height: '100%' }} onClick={colorMode.toggleColorMode}>
+                            <ListItemAvatar>
+                                <NightsStayIcon />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary="White / Dark Mode"
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem
+                        disablePadding
                         secondaryAction={
                             <IconButton edge="end">
                                 <KeyboardArrowRightIcon />
                             </IconButton>
                         }
                     >
-                        <ListItemAvatar>
-                            <PortraitIcon />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary="Account settings"
-                        />
-                    </ListItem>
-                    <ListItem
-                        secondaryAction={
-                            <IconButton edge="end">
-                                <ToggleOnIcon />
-                            </IconButton>
-                        }
-                    >
-                        <ListItemAvatar>
-                            <NightsStayIcon />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary="White / Dark Mode"
-                        />
-                    </ListItem>
-                    <ListItem
-                        secondaryAction={
-                            <IconButton edge="end">
-                                <KeyboardArrowRightIcon />
-                            </IconButton>
-                        }
-                    >
-                        <ListItemAvatar>
-                            <SupportAgentIcon />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary="Help center"
-                        />
+                        <ListItemButton sx={{ height: '100%' }}>
+                            <ListItemAvatar>
+                                <SupportAgentIcon />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary="Help center"
+                            />
+                        </ListItemButton>
                     </ListItem>
                 </List>
             </Grid>
             <Grid item xs={12} textAlign={'center'}>
                 <Button onClick={logOut} variant="contained" sx={{ py: 1.5, mt: 10, width: '100%', maxWidth: 335 }}>Log out</Button>
             </Grid>
-        </Grid >
+        </Grid>
     )
 })
 

@@ -10,6 +10,7 @@ class appState {
   snackText: string = '';
   isAuth: boolean = authStatus;
   isProfile: boolean = false;
+  language: string = 'English';
 
   constructor() {
     makeAutoObservable(this);
@@ -33,6 +34,10 @@ class appState {
     this.isProfile = s;
   }
 
+  changeLang(l: string) {
+    this.language = l;
+  }
+
   get snackbarOpen() {
     return this.snackOpen;
   }
@@ -47,6 +52,9 @@ class appState {
   }
   get isProfileStatus() {
     return this.isProfile;
+  }
+  get appLang() {
+    return this.language;
   }
 
 }

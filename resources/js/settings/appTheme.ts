@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
 import * as style from '../../sass/app.scss';
 
-const appTheme = createTheme({
+const appTheme = {
     palette: {
       primary: {
         main: '#178fdd',
@@ -70,6 +70,6 @@ const appTheme = createTheme({
         }
       }
     }
-  });
+  };
 
   export default appTheme
