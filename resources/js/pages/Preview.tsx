@@ -23,13 +23,15 @@ const Preview = () => {
     const navigator = useNavigate();
 
     return (
-        <Grid container sx={{ my: 'auto', py: 1, px: 1 }}>
+        <Grid container sx={{ my: 'auto', py: 1, px: 1, minHeight: 'calc(100vh - 90px)' }}>
             <Grid item xs={12} pt={5} px={4} textAlign={'center'}>
                 <Box sx={{ maxWidth: 600, mx: 'auto', textAlign: 'center', mb: 2 }}>
                     <Carousel items={sliderItems} setText={setText} />
                 </Box>
                 <Typography variant="h3" component={'h1'} fontWeight={800} gutterBottom>Site Guard</Typography>
                 <Typography variant="h6" component={'p'} gutterBottom>{textSlides[currentText]}</Typography>                
+            </Grid>
+            <Grid item xs={12} textAlign={'center'} mt={'auto'}>             
                 <Button onClick={() => navigator('/login')} variant="contained" sx={{py: 1.5, mt: 10, width: '100%', maxWidth: 335}}>Sign In</Button>
             </Grid>
         </Grid>

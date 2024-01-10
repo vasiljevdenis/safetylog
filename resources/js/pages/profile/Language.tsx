@@ -33,8 +33,8 @@ const Language = observer(() => {
     }
 
     useEffect(() => {
-        store.toggleProfile(true);
-        return () => store.toggleProfile(false);
+        store.toggleHeader(false);
+        return () => store.toggleHeader(true);
     }, []);
 
     return (

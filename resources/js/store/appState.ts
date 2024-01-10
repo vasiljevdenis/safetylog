@@ -9,7 +9,8 @@ class appState {
   snackSeverity: AlertColor = 'success';
   snackText: string = '';
   isAuth: boolean = authStatus;
-  isProfile: boolean = false;
+  headerShow: boolean = true;
+  footerShow: boolean = true;
   language: string = 'English';
 
   constructor() {
@@ -30,8 +31,11 @@ class appState {
     this.isAuth = !this.isAuth;
   }
 
-  toggleProfile(s: boolean) {
-    this.isProfile = s;
+  toggleHeader(s: boolean) {
+    this.headerShow = s;
+  }
+  toggleFooter(s: boolean) {
+    this.footerShow = s;
   }
 
   changeLang(l: string) {
@@ -50,8 +54,11 @@ class appState {
   get isAuthenticated() {
     return this.isAuth;
   }
-  get isProfileStatus() {
-    return this.isProfile;
+  get headerShowStatus() {
+    return this.headerShow;
+  }
+  get footerShowStatus() {
+    return this.footerShow;
   }
   get appLang() {
     return this.language;

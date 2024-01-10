@@ -12,8 +12,9 @@ const appTheme = {
         dark: '#6dcd01'
       },
       error: {
-        main: '#ff0000',
-        light: '#ff3b30b5'      
+        main: '#ff3b30b5',
+        light: '#ffbeba',
+        dark: '#ff0000'
       }
     },
     typography: {
@@ -63,7 +64,7 @@ const appTheme = {
       MuiListItemText: {
         styleOverrides: {
           root: {
-            "& .MuiTypography-root": {
+            "& .MuiTypography-root:not(.MuiListItemText-secondary)": {
               fontWeight: 700
             }
           }

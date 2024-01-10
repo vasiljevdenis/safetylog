@@ -28,8 +28,8 @@ const Profile = observer(() => {
     }
 
     useEffect(() => {
-        store.toggleProfile(true);
-        return () => store.toggleProfile(false);
+        store.toggleHeader(false);
+        return () => store.toggleHeader(true);
     }, []);
 
     return (
@@ -128,8 +128,8 @@ const Profile = observer(() => {
                     </ListItem>
                 </List>
             </Grid>
-            <Grid item xs={12} textAlign={'center'}>
-                <Button onClick={logOut} variant="contained" sx={{ py: 1.5, mt: 10, width: '100%', maxWidth: 335 }}>Log out</Button>
+            <Grid item xs={12} textAlign={'center'} mt={'auto'}>
+                <Button onClick={logOut} variant="contained" sx={{ py: 1.5, width: '100%', maxWidth: 335 }}>Log out</Button>
             </Grid>
         </Grid>
     )

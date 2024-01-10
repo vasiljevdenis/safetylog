@@ -57,19 +57,19 @@ const Login = observer(() => {
                 navigator('/');
             } else {
                 notify('error', 'Invalid e-mail or password');
-            }                
+            }
         }
     }
 
     return (
-        <Grid container sx={{ my: 'auto', py: 1, px: 1 }}>
+        <Grid container sx={{ my: 'auto', py: 1, px: 1, minHeight: 'calc(100vh - 90px)' }}>
             <Grid item xs={12} pt={5} px={4} textAlign={'center'}>
                 <Box sx={{ maxWidth: 600, mx: 'auto', textAlign: 'center', mb: 0 }}>
                     <img src={loginImage} alt="Login image" style={{ width: '100%' }} />
                 </Box>
                 <Typography variant="h3" component={'h1'} fontWeight={600} gutterBottom>MWH <br /> Treatment</Typography>
-                <Grid container sx={{ my: 'auto', py: 1, px: 1 }}>
-                    <Grid item xs={12} pt={2} px={4} textAlign={'center'}>
+                <Grid container sx={{ my: 'auto', py: 1 }}>
+                    <Grid item xs={12} pt={2} textAlign={'center'}>
                         <TextField
                             label="Email"
                             error={emailError}
@@ -80,7 +80,7 @@ const Login = observer(() => {
                             onChange={changeEmail}
                         />
                     </Grid>
-                    <Grid item xs={12} pt={2} px={4} textAlign={'center'}>
+                    <Grid item xs={12} pt={2} textAlign={'center'}>
                         <TextField
                             label="Password"
                             error={passwordError}
@@ -90,6 +90,11 @@ const Login = observer(() => {
                             value={user.password}
                             type='password'
                             onChange={changePassword}
+                            onKeyDown={e => {
+                                if (e.key === "Enter") {
+                                    logIn();
+                                }
+                            }}
                             sx={{
                                 "& .MuiFormHelperText-root": {
                                     textAlign: 'right',
@@ -98,7 +103,7 @@ const Login = observer(() => {
                             }}
                         />
                     </Grid>
-                    <Grid item xs={12} pt={5} px={4} textAlign={'right'}>
+                    <Grid item xs={12} textAlign={'right'} mt={'auto'}>
                         <Button
                             variant="contained"
                             onClick={logIn}

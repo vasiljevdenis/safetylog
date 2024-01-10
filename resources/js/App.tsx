@@ -1,4 +1,4 @@
-import { CssBaseline, Grid, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,6 +14,7 @@ import Inbox from './pages/Inbox';
 import Profile from './pages/Profile';
 import Language from './pages/profile/Language';
 import ColorModeContext from './settings/themeMode';
+import Metrics from './pages/Metrics';
 
 const App = observer(() => {
 
@@ -34,6 +35,7 @@ const App = observer(() => {
       createTheme({
         ...appTheme,
         palette: {
+          ...appTheme.palette,
           mode: mode
         },
       }),
@@ -54,17 +56,20 @@ const App = observer(() => {
             </Routes>
           ) : (
             <>
-              {store.isProfileStatus ? (<></>) : (
+              {!store.headerShowStatus ? (<></>) : (
                 <Header />
               )}
               <Routes>
                 <Route path='/' element={<Main />} />
                 <Route path='/inbox' element={<Inbox />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/metrics' element={<Metrics />} />
                 <Route path='/profile/language' element={<Language />} />
                 <Route path="*" element={<Main />} />
               </Routes>
-              <Footer />
+              {!store.footerShowStatus ? (<></>) : (
+                <Footer />
+              )}
             </>
           )}
         </ThemeProvider>
