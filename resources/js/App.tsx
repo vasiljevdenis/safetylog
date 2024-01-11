@@ -15,6 +15,14 @@ import Profile from './pages/Profile';
 import Language from './pages/profile/Language';
 import ColorModeContext from './settings/themeMode';
 import Metrics from './pages/Metrics';
+import Induction from './pages/Induction';
+import SiteSpecific from './pages/induction/SiteSpecific';
+import MwhtPass from './pages/induction/MwhtPass';
+import Issue from './pages/Issue';
+import SignIn from './pages/SignIn';
+import Emergency from './pages/Emergency';
+import Manager from './pages/emergency/Manager';
+import FirstAider from './pages/emergency/FirstAider';
 
 const App = observer(() => {
 
@@ -63,7 +71,15 @@ const App = observer(() => {
                 <Route path='/' element={<Main />} />
                 <Route path='/inbox' element={<Inbox />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/induction' element={<Induction />} />
+                <Route path='/induction/site-specific' element={<SiteSpecific />} />
+                <Route path='/induction/mwht-passport' element={<MwhtPass />} />
                 <Route path='/metrics' element={<Metrics />} />
+                <Route path='/issue' element={<Issue />} />
+                <Route path='/signin' element={<SignIn />} />
+                <Route path='/emergency' element={<Emergency />} />
+                <Route path='/emergency/manager' element={<Manager />} />
+                <Route path='/emergency/first-aider' element={<FirstAider />} />
                 <Route path='/profile/language' element={<Language />} />
                 <Route path="*" element={<Main />} />
               </Routes>

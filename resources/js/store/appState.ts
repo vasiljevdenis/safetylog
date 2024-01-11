@@ -12,6 +12,8 @@ class appState {
   headerShow: boolean = true;
   footerShow: boolean = true;
   language: string = 'English';
+  siteInduction: boolean = false;
+  passInduction: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -41,6 +43,12 @@ class appState {
   changeLang(l: string) {
     this.language = l;
   }
+  changeSiteInd(s: boolean) {
+    this.siteInduction = s;
+  }
+  changePassInd(s: boolean) {
+    this.passInduction = s;
+  }
 
   get snackbarOpen() {
     return this.snackOpen;
@@ -62,6 +70,12 @@ class appState {
   }
   get appLang() {
     return this.language;
+  }
+  get siteInd() {
+    return this.siteInduction;
+  }
+  get passInd() {
+    return this.passInduction;
   }
 
 }

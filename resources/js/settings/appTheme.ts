@@ -14,7 +14,7 @@ const appTheme = {
       error: {
         main: '#ff3b30b5',
         light: '#ffbeba',
-        dark: '#ff0000'
+        dark: '#ff0000cf'
       }
     },
     typography: {

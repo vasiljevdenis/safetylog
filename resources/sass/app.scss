@@ -31,3 +31,15 @@ div:focus-visible {
 .slick-next::before {
   color: rgb(0 0 0 / 70%);
 }
+
+textarea {
+  resize: none;
+}
+
+textarea:focus-visible {
+  outline: none;
+}
+
+textarea:hover {
+  border: 1px solid #178fdd !important;
+}

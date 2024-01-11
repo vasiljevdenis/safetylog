@@ -35,7 +35,7 @@ const Main = () => {
     },
     {
       title: 'Sign In / Sign Out',
-      path: '/',
+      path: '/signin',
       backgroundColor: 'primary.main'
     }
   ];
